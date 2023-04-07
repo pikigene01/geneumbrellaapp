@@ -49,7 +49,7 @@ const defaultOptions = {
 const mergeImages = (sources = [], options = {}) =>
   new Promise((resolve) => {
     options = Object.assign({}, defaultOptions, options);
-    console.log(options)
+    console.log(options);
 
     const canvas = window.document.createElement("canvas");
     const Image = window.Image;
@@ -98,7 +98,6 @@ const mergeImages = (sources = [], options = {}) =>
     );
   });
 
-
 const UmbrellaComponent = (logo, color, toggleUploadIcon) => {
   let imageLoading = false;
   let src = UmbrellaMapping[color];
@@ -136,10 +135,9 @@ const UmbrellaComponent = (logo, color, toggleUploadIcon) => {
       }
     ).then((b64) => {
       src = b64;
-    
+
       imageLoading = false;
       toggleUploadIcon = false;
-
 
       document.querySelector("#UmbrellaComponent").innerHTML = `
       <div class='Umbrella'>
@@ -197,19 +195,17 @@ const CustomizeUmbrella = () => {
       ["Close-icon--visible"]: fileName !== "",
     });
 
-    setInterval(()=>{
-      
-        document.querySelectorAll('.color_btn').forEach((btn)=>{
-          btn.onclick = (e)=>{
-            let targetValue = e.target.getAttribute('data-target');
-            onChangeColor(targetValue);
-            umbrellaUpdate();
-            
-          }
-        });
-    },1000);
+    setInterval(() => {
+      document.querySelectorAll(".color_btn").forEach((btn) => {
+        btn.onclick = (e) => {
+          let targetValue = e.target.getAttribute("data-target");
+          onChangeColor(targetValue);
+          umbrellaUpdate();
+        };
+      });
+    }, 1000);
 
-    const onChangeColor = (umbrellaColor) =>{
+    const onChangeColor = (umbrellaColor) => {
       color = umbrellaColor;
       UmbrellaClass = classNames({
         ["Row"]: true,
@@ -224,16 +220,15 @@ const CustomizeUmbrella = () => {
         [`Upload-Button--${color}`]: color,
       });
     };
-    
 
     const onChangeFile = (e) => {
       let fileAssign = e.target.files[0];
       e.target.value = null;
 
       fileLoading = true;
-        fileName = fileAssign.name;
-        fileLoading = false;
-        file = URL.createObjectURL(fileAssign);
+      fileName = fileAssign.name;
+      fileLoading = false;
+      file = URL.createObjectURL(fileAssign);
     };
 
     const onToggleUploadIcon = (loading) => {
@@ -266,7 +261,7 @@ const CustomizeUmbrella = () => {
         <div class='Info-wrapper'>
             <h2 class='Heading'>Customize your Umbrella</h2>
             <div id="color_wrapper">
-            ${ColorButtons(color,onChangeColor)}
+            ${ColorButtons(color, onChangeColor)}
             </div>
             <p class='Text Text--strong'>Customize your umbrella</p>
             <p class='Text Text--subtle'>Upload a logo for an instant preview</p>
@@ -289,8 +284,8 @@ const CustomizeUmbrella = () => {
                         class="${UploadIconClass}"
                          />
                     <p class='Text--strong Text--ellipsis' style="cursor:pointer;" >${
-        fileName ? fileName : "UPLOAD LOGO"
-      }</p>
+                      fileName ? fileName : "UPLOAD LOGO"
+                    }</p>
                     <div class='Upload-close'>
                         <i class="${CloseIconClass}" onclick="${onRemoveLogo()}">close</i>
                     </div>
@@ -309,18 +304,18 @@ const CustomizeUmbrella = () => {
   });
 };
 
-const ColorButtons = (color,onChangeColor) => {
-    const getColorButtonClass = (umbrellaColor) => {
-      return classNames({
-        ["Color-swatch"]: true,
-        [`Color-swatch--${umbrellaColor}`]: umbrellaColor,
-        [`Color-active--${color}`]: color === umbrellaColor,
-      });
-    };
-let htmlData = "";
+const ColorButtons = (color, onChangeColor) => {
+  const getColorButtonClass = (umbrellaColor) => {
+    return classNames({
+      ["Color-swatch"]: true,
+      [`Color-swatch--${umbrellaColor}`]: umbrellaColor,
+      [`Color-active--${color}`]: color === umbrellaColor,
+    });
+  };
+  let htmlData = "";
 
-    colors.map((umbrellaColor) => {
-        htmlData += `
+  colors.map((umbrellaColor) => {
+    htmlData += `
                   <span
                   id="color_click_${umbrellaColor}"
                   class="${getColorButtonClass(umbrellaColor)} color_btn"
@@ -328,13 +323,13 @@ let htmlData = "";
               >
               </span>
                   `;
-    });
-    return `
+  });
+  return `
           <div class='Swatch'>
               ${htmlData}
           </div>
       `;
-// });
+  // });
 };
 
 const getApp = () => {
