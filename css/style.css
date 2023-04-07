@@ -1,0 +1,261 @@
+@import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+
+:root {
+    /* Colors */
+    --umbrella-blue: #31B4E5;
+    --umbrella-pink: #DB518B;
+    --umbrella-yellow: #FDD041;
+    --background-blue: #E6F6FC;
+    --backgound-pink: #ffdfec;;
+    --background-yellow: #FFFAED;
+    --border-blue: #7ED0EF;
+    --border-yellow: #FFEAB2;
+    --border-pink: #fa92be;
+    --text: #2f2f2f;
+      --text-subtle: #868686;
+  
+    /* Grid */
+    --grid-columns: 12;
+  
+    /* Fonts */
+    --font-size: 16px;
+    --font-size-s: 12px;
+    --font-height: 20px;
+    --font-weight-bold: 700;
+  
+    /* Animation */
+    --animation: loader-spin 3s linear;
+  }
+  
+  @keyframes loader-spin {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+  }
+
+  body {
+    margin: 0;
+    overflow-x: hidden;
+    font-family: "Karla", sans-serif !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+      monospace;
+  }
+  .Loader--blue {
+    fill: var(--umbrella-blue);
+}
+
+.Loader--pink {
+    fill: var(--umbrella-pink);
+}
+
+.Loader--yellow {
+    fill: var(--umbrella-yellow);
+}
+
+.Swatch {
+    margin-bottom: 2em;
+}
+
+.Color-swatch {
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    margin-right: 15px;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+}
+
+.Color-swatch--blue {
+    background: var(--umbrella-blue);
+}
+
+.Color-swatch--pink {
+    background: var(--umbrella-pink);
+}
+
+.Color-swatch--yellow {
+    background: var(--umbrella-yellow);
+}
+
+.Color-active--blue {
+    border: solid 5px var(--border-blue);
+}
+
+.Color-active--yellow {
+    border: solid 5px var(--border-yellow);
+}
+
+.Color-active--pink {
+    border: solid 5px var(--border-pink);
+}
+
+.Umbrella-image {
+    height: 400px;
+    max-width: 100%;
+    transition: opacity 1s linear;
+}
+
+.Umbrella-loading {
+    opacity: 1;
+    height: 50px;
+    animation: var(--animation);
+    transition: opacity 2s linear, height 2s step-start;
+}
+
+.d-none {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transition-timing-function: linear, step-end;
+}
+
+@media (min-width: 576px) and (max-width: 767px), (max-width: 575px) {
+    .Umbrella {
+        padding: 50px 20px 10px;
+        height: 300px;
+        display: flex;
+    }
+ 
+    .Umbrella-image {
+        max-height: 100%;
+    }
+}
+
+.Row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    min-height: 100vh;
+    width: 100vw;
+    transition: background-color 0.4s linear;
+}
+
+.Row--blue {
+    background-color: var(--background-blue);
+}
+
+.Row--pink {
+    background-color: var(--backgound-pink);
+}
+
+.Row--yellow {
+    background-color: var(--background-yellow);
+}
+
+.Col {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.Col--6 {
+    flex: 0 0;
+    flex-basis: calc((100% / 2));
+    max-width: calc((100% / 2));
+}
+
+.Heading {
+    font-size: 2em;
+    font-weight: 560;
+}
+
+.Text {
+    margin: 0;
+    line-height: var(--font-height);
+}
+
+.Text--subtle {
+    color: var(--text-subtle);
+}
+
+.Text--strong {
+    font-size: var(--font-size);
+    font-weight: var(--font-weight-bold);
+}
+
+.Text--small {
+    margin-top: 8px;
+    font-size: var(--font-size-s);
+    line-height: normal;
+}
+
+.Text--ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 60%;
+    text-align: center;
+}
+
+.Upload-Button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 40px;
+    color: white;
+    border-radius: 20px;
+    margin-top: 1rem;
+    text-transform: uppercase;
+    margin-top: 10px;
+    width: 376px;
+    transition: background-color 0.4s linear;
+} 
+
+.Upload-Button--blue {
+    background-color: var(--umbrella-blue);
+}
+
+.Upload-Button--pink {
+    background-color: var(--umbrella-pink);
+}
+
+.Upload-Button--yellow {
+    background-color: var(--umbrella-yellow);
+}
+
+.Upload-icon {
+    margin-left: 12px;
+    cursor: pointer;
+}
+
+.Upload-icon-loading {
+    animation: var(--animation);
+    cursor: unset;
+}
+
+.Upload-close {
+    margin-right: 8px;
+    display: flex;
+}
+
+.Close-icon {
+    cursor: pointer;
+    visibility: hidden;
+}
+
+.Close-icon--visible {
+    visibility: unset;
+}
+
+@media (min-width: 576px) and (max-width: 767px), (max-width: 575px)  {
+    .Row {
+        flex-direction: column-reverse;
+    }
+    .Col--s-12 {
+        flex: 0 0;
+	    flex-basis: calc(100% / 1);
+        max-width: calc(100% / 1);
+    }
+    .Heading {
+        font-size: 2.35em;
+    }
+    .Upload-Button {
+        width: 300px;
+    }
+}
