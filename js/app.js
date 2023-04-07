@@ -177,33 +177,52 @@ const UmbrellaComponent = (logo, color, toggleUploadIcon) => {
 
 const CustomizeUmbrella = () => {
   document.addEventListener("DOMContentLoaded", () => {
-    const UmbrellaClass = classNames({
+    let UmbrellaClass = classNames({
       ["Row"]: true,
       [`Row--${color}`]: color,
     });
-    const UploadIconClass = classNames({
+    let UploadIconClass = classNames({
       ["Upload-icon"]: true,
       ["Upload-icon-loading"]: fileLoading || uploadButtonLoading,
     });
 
-    const UploadButtonClass = classNames({
+    let UploadButtonClass = classNames({
       ["Upload-Button"]: true,
       [`Upload-Button--${color}`]: color,
     });
 
-    const CloseIconClass = classNames({
+    let CloseIconClass = classNames({
       ["material-icons"]: true,
       ["Close-icon"]: true,
       ["Close-icon--visible"]: fileName !== "",
     });
 
+    setInterval(()=>{
+      
+        document.querySelectorAll('.color_btn').forEach((btn)=>{
+          btn.onclick = (e)=>{
+            let targetValue = e.target.getAttribute('data-target');
+            onChangeColor(targetValue);
+            umbrellaUpdate();
+            
+          }
+        });
+    },1000);
+
     const onChangeColor = (umbrellaColor) =>{
       color = umbrellaColor;
-      alert('fnfhn')
-    document.addEventListener('DOMContentLoaded',()=>{
-        umbrellaUpdate();
-    });
-
+      UmbrellaClass = classNames({
+        ["Row"]: true,
+        [`Row--${color}`]: color,
+      });
+      UmbrellaClass = classNames({
+        ["Row"]: true,
+        [`Row--${color}`]: color,
+      });
+      UploadButtonClass = classNames({
+        ["Upload-Button"]: true,
+        [`Upload-Button--${color}`]: color,
+      });
     };
     
 
@@ -268,8 +287,8 @@ const CustomizeUmbrella = () => {
                             : UploadIcon
                         }"
                         class="${UploadIconClass}"
-                        onclick='${onUploadLogo()}' />
-                    <p class='Text--strong Text--ellipsis' onclick="${onUploadLogo()}" style="cursor:pointer;" >${
+                         />
+                    <p class='Text--strong Text--ellipsis' style="cursor:pointer;" >${
         fileName ? fileName : "UPLOAD LOGO"
       }</p>
                     <div class='Upload-close'>
@@ -306,17 +325,9 @@ let htmlData = "";
                   id="color_click_${umbrellaColor}"
                   class="${getColorButtonClass(umbrellaColor)} color_btn"
                   data-target="${umbrellaColor}"
-                  onclick="onChangeColor()"
               >
               </span>
                   `;
-    });
-    document.addEventListener('DOMContentLoaded',()=>{
-      document.querySelectorAll('.color_btn').forEach((btn)=>{
-        btn.onclick = (e)=>{
-          alert('fnfn')
-        }
-      });
     });
     return `
           <div class='Swatch'>
